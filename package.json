@@ -1,5 +1,5 @@
 {
-  "name": "Hifiles official desktop app",
+  "name": "Hifiles desktop app",
   "version": "1.0.0",
   "description": "a desktop app version of hifiles.com",
   "main": "main.js",
@@ -7,10 +7,16 @@
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "",
+  "repository": "https://github.com/yishak621/hifiles-desktop-app",
+  "homepage": "https://github.com/yishak621/hifiles-desktop-app",
   "build": {
-    "appId": "com.example.app",
-    "productName": "MyElectronApp",
+    "appId": "com.hifiles.www",
+    "copyright": "copyright typing.ai",
+    "mac": {
+      "catagory": "public.app-catagory.productivity",
+      "target": "dmg"
+    },
+    "productName": "hifiles desktop app",
     "directories": {
       "output": "dist"
     },
@@ -18,7 +24,10 @@
       "**/*"
     ],
     "win": {
-      "icon": "path/to/icon.ico"
+      "target": "zip"
+    },
+    "linux": {
+      "catagory": "Utility"
     }
   },
   "keywords": [],
