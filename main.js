@@ -1,5 +1,3 @@
-// main.js
-
 const {
   app,
   BrowserWindow,
@@ -8,7 +6,11 @@ const {
   Tray,
   Menu,
   powerMonitor,
+  dialog,
 } = require("electron");
+
+const updater = require("./updater.js");
+const path = require("path");
 
 // TRAY
 let tray;
@@ -30,7 +32,41 @@ function createTray() {
   tray.setContextMenu(trayMenu);
 }
 
+const createMenu = () => {
+  const menuTemplate = [
+    {
+      label: "File",
+      submenu: [{ role: "quit" }],
+    },
+
+    {
+      label: "View",
+      submenu: [
+        { role: "reload" },
+        { role: "resetZoom" },
+        { role: "zoomIn" },
+        { role: "zoomOut" },
+      ],
+    },
+    {
+      label: "Window",
+      submenu: [{ role: "minimize" }, { role: "zoom" }, { role: "close" }],
+    },
+    {
+      label: "About",
+      click: () => {
+        showAboutDialog();
+      },
+    },
+  ];
+
+  const menu = Menu.buildFromTemplate(menuTemplate);
+  Menu.setApplicationMenu(menu);
+};
+
 function createWindow() {
+  //UPDATER FUNCTION AFTER 3 SECONDS
+  setTimeout(updater, 3000);
   //OPEN WITH DEVICE FULL SCREEN AND WIDTH
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
 
@@ -60,7 +96,9 @@ function createWindow() {
   });
 
   createTray();
+  createMenu();
 }
+
 // Handle PC going to sleep
 powerMonitor.on("suspend", () => {
   console.log("System is going to sleep");
@@ -90,3 +128,14 @@ app.on("activate", () => {
     createWindow();
   }
 });
+
+const showAboutDialog = () => {
+  const version = app.getVersion();
+  dialog.showMessageBox({
+    type: "info",
+    title: "About hifiles",
+    message: `App Version: ${version}\n\nThis is a hifiles desktop app`,
+    buttons: ["OK"],
+    icon: path.join(__dirname, "/build/icon.png"), // Specify the path to your icon
+  });
+};

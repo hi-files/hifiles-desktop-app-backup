@@ -1,19 +1,26 @@
 {
-  "name": "Hifiles desktop app",
-  "version": "1.0.0",
+  "name": "hifiles",
+  "version": "0.8.0",
+  "versionType": "beta",
   "description": "a desktop app version of hifiles.com",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "electron-builder -w",
+    "release": "electron-builder -p \"onTagOrDraft\"",
+    "win-cert": "electron-builder create-self-signed-cert -p typingAI"
   },
   "repository": "https://github.com/yishak621/hifiles-desktop-app",
   "homepage": "https://github.com/yishak621/hifiles-desktop-app",
   "build": {
     "appId": "com.hifiles.www",
     "copyright": "copyright typing.ai",
+    "publish": {
+      "provider": "github"
+    },
     "mac": {
-      "catagory": "public.app-catagory.productivity",
+      "category": "public.app-category.productivity",
       "target": "dmg"
     },
     "productName": "hifiles desktop app",
@@ -24,17 +31,39 @@
       "**/*"
     ],
     "win": {
-      "target": "zip"
+      "certificateFile": "private/typingAI.pfx",
+      "certificatePassword": "",
+      "verifyUpdateCodeSignature": false,
+      "publisherName": "typingAI"
     },
     "linux": {
-      "catagory": "Utility"
+      "category": "Utility",
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm"
+      ],
+      "icon": "path/to/icon.png",
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
     }
   },
+  "publish": [
+    {
+      "provider": "github",
+      "owner": "yishak621",
+      "repo": "hifiles-desktop-app",
+      "token": "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"
+    }
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "electron": "^32.0.1",
     "electron-builder": "^24.13.3"
+  },
+  "dependencies": {
+    "electron-log": "^5.1.7",
+    "electron-updater": "^6.2.1"
   }
 }
