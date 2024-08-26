@@ -1,13 +1,13 @@
 {
   "name": "hifiles",
-  "version": "0.8.0",
+  "version": "1.0.0",
   "versionType": "beta",
   "description": "a desktop app version of hifiles.com",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "electron-builder -w",
+    "build": "electron-builder -wl",
     "release": "electron-builder -p \"onTagOrDraft\"",
     "win-cert": "electron-builder create-self-signed-cert -p typingAI"
   },
