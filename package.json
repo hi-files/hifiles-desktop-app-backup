@@ -7,7 +7,7 @@
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "electron-builder -wl",
+    "build": "electron-builder -w",
     "release": "electron-builder -p \"onTagOrDraft\"",
     "win-cert": "electron-builder create-self-signed-cert -p typingAI"
   },

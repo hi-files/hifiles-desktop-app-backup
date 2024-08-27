@@ -19,7 +19,7 @@ let trayMenu = Menu.buildFromTemplate([{ role: "quit" }]);
 
 function createTray() {
   tray = new Tray("trayTemplate@2x.png");
-  tray.setToolTip("hifiles.com");
+  tray.setToolTip("hifiles");
 
   tray.on("click", (e) => {
     if (e.shiftKey) {
