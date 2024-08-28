@@ -1,8 +1,8 @@
 {
   "name": "hifiles",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "versionType": "beta",
-  "description": "a desktop app version of hifiles.com",
+  "description": "hifiles-chat with your docs",
   "main": "main.js",
   "scripts": {
     "start": "electron .",

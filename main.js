@@ -18,7 +18,9 @@ let mainWindow;
 let trayMenu = Menu.buildFromTemplate([{ role: "quit" }]);
 
 function createTray() {
-  tray = new Tray("trayTemplate@2x.png");
+  const iconPath = path.join(__dirname, "trayTemplate@2x.png");
+  const tray = new Tray(iconPath);
+
   tray.setToolTip("hifiles");
 
   tray.on("click", (e) => {
@@ -96,7 +98,7 @@ function createWindow() {
   });
 
   createTray();
-  createMenu();
+  setTimeout(createMenu, 3000);
 }
 
 // Handle PC going to sleep
