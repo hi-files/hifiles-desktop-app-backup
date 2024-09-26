@@ -7,9 +7,8 @@
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "electron-builder -w",
-    "release": "electron-builder -p \"onTagOrDraft\"",
-    "win-cert": "electron-builder create-self-signed-cert -p typingAI"
+    "build": "electron-builder",
+    "release": "electron-builder -p \"onTagOrDraft\""
   },
   "repository": "https://github.com/yishak621/hifiles-desktop-app",
   "homepage": "https://github.com/yishak621/hifiles-desktop-app",
@@ -30,12 +29,6 @@
     "files": [
       "**/*"
     ],
-    "win": {
-      "certificateFile": "private/typingAI.pfx",
-      "certificatePassword": "",
-      "verifyUpdateCodeSignature": false,
-      "publisherName": "typingAI"
-    },
     "linux": {
       "category": "Utility",
       "target": [
@@ -45,6 +38,9 @@
       ],
       "icon": "path/to/icon.png",
       "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "win": {
+      "target": "nsis"
     }
   },
   "publish": [
