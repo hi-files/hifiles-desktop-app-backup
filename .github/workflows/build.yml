@@ -1,6 +1,6 @@
 name: Build Electron App
 env: 
-  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  GH_TOKEN: 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
 on:
   push:
     branches:
