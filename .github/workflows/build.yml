@@ -1,5 +1,6 @@
 name: Build Electron App
-
+env: 
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
 on:
   push:
     branches:
@@ -75,3 +76,5 @@ jobs:
         with:
           name: linux-artifact
           path: dist/**/* # Adjust this to your actual output directory
+
+
