@@ -1,0 +1,77 @@
+name: Build Electron App
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Build the app for Windows
+        run: npm run build -- --win
+
+      - name: Upload Windows Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-artifact
+          path: dist/**/* # Adjust this to your actual output directory
+
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Build the app for macOS
+        run: npm run build -- --mac
+
+      - name: Upload macOS Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: macos-artifact
+          path: dist/**/* # Adjust this to your actual output directory
+
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Build the app for Linux
+        run: npm run build -- --linux
+
+      - name: Upload Linux Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux-artifact
+          path: dist/**/* # Adjust this to your actual output directory
