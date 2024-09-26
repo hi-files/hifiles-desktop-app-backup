@@ -174,13 +174,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
-      - name: Upload Windows Artifact to Release
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: dist/hifiles-desktop-app-Setup-1.0.7.exe
-          asset_name: hifiles-setup-windows-1.0.7.exe
-          asset_content_type: application/octet-stream
+      # - name: Upload Windows Artifact to Release
+      #   uses: actions/upload-release-asset@v1
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }}
+      #     asset_path: dist/hifiles-desktop-app-Setup-1.0.7.exe
+      #     asset_name: hifiles-setup-windows-1.0.7.exe
+      #     asset_content_type: application/octet-stream
 
       - name: Upload macOS Artifact to Release
         uses: actions/upload-release-asset@v1
