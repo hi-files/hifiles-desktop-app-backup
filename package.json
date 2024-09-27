@@ -1,6 +1,6 @@
 {
   "name": "hifiles",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "versionType": "beta",
   "description": "hifiles-chat with your docs",
   "main": "main.js",
@@ -22,7 +22,7 @@
       "category": "public.app-category.productivity",
       "target": "dmg"
     },
-    "productName": "hifiles desktop app",
+    "productName": "hifiles-desktop-app",
     "directories": {
       "output": "dist"
     },
@@ -37,7 +37,7 @@
         "rpm"
       ],
       "icon": "path/to/icon.png",
-      "artifactName": "${productName}-${version}-${arch}.${ext}"
+      "artifactName": "${productName}-${version}.${ext}"
     },
     "win": {
       "target": "nsis"
