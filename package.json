@@ -1,6 +1,6 @@
 {
   "name": "hifiles",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "versionType": "beta",
   "description": "hifiles-chat with your docs",
   "main": "main.js",
