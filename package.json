@@ -1,6 +1,6 @@
 {
   "name": "hifiles",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "versionType": "beta",
   "description": "hifiles-chat with your docs",
   "main": "main.js",
@@ -10,8 +10,8 @@
     "build": "electron-builder",
     "release": "electron-builder -p \"onTagOrDraft\""
   },
-  "repository": "https://github.com/yishak621/hifiles-desktop-app",
-  "homepage": "https://github.com/yishak621/hifiles-desktop-app",
+  "repository": "https://github.com/yishak621/hifiles-desktop-app-backup",
+  "homepage": "https://github.com/yishak621/hifiles-desktop-app-backup",
   "build": {
     "appId": "com.hifiles.www",
     "copyright": "copyright typing.ai",
@@ -47,8 +47,8 @@
     {
       "provider": "github",
       "owner": "yishak621",
-      "repo": "hifiles-desktop-app",
-      "token": "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"
+      "repo": "hifiles-desktop-app-backup",
+      "token": "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"
     }
   ],
   "keywords": [],

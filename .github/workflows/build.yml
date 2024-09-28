@@ -326,8 +326,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.0.16
-          release_name: Release v1.0.16
+          tag_name: v1.0.17
+          release_name: Release v1.0.17
           draft: false
           prerelease: false
 
@@ -335,22 +335,22 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: dist/hifiles-desktop-app Setup 1.0.16.exe
-          asset_name: hifiles-setup-windows-1.0.16.exe
+          asset_path: dist/hifiles-desktop-app Setup 1.0.17.exe
+          asset_name: hifiles-setup-windows-1.0.17.exe
           asset_content_type: application/octet-stream
 
       - name: Upload macOS Artifact to Release
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: dist/hifiles-desktop-app-1.0.16-arm64.dmg
-          asset_name: hifiles-setup-macos-1.0.16.dmg
+          asset_path: dist/hifiles-desktop-app-1.0.17-arm64.dmg
+          asset_name: hifiles-setup-macos-1.0.17.dmg
           asset_content_type: application/octet-stream
 
       - name: Upload Linux Artifact to Release
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: dist/hifiles-desktop-app-1.0.16.deb
-          asset_name: hifiles-setup-linux-1.0.16.deb
+          asset_path: dist/hifiles-desktop-app-1.0.17.deb
+          asset_name: hifiles-setup-linux-1.0.17.deb
           asset_content_type: application/octet-stream

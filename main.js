@@ -81,7 +81,7 @@ function createWindow() {
     },
   });
   //LOAD URL
-  mainWindow.loadURL("https://final-desktop-app.vercel.app/");
+  mainWindow.loadURL("https://hifiles.vercel.app/");
 
   //OPEN LINKS IN TO THE USER DEFAULT BROWSER
 
