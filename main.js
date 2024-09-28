@@ -68,7 +68,7 @@ const createMenu = () => {
 
 function createWindow() {
   //UPDATER FUNCTION AFTER 3 SECONDS
-  setTimeout(updater, 3000);
+  //setTimeout(updater, 3000);
   //OPEN WITH DEVICE FULL SCREEN AND WIDTH
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
 
@@ -95,6 +95,10 @@ function createWindow() {
       event.preventDefault();
       shell.openExternal(url);
     }
+  });
+  // Wait for window to finish loading before checking for updates
+  mainWindow.once("ready-to-show", () => {
+    setTimeout(updater, 3000); // Delay for checking updates after window is ready
   });
 
   createTray();
