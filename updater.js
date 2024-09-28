@@ -5,8 +5,8 @@ const { autoUpdater } = require("electron-updater");
 autoUpdater.setFeedURL({
   provider: "github",
   owner: "yishak621",
-  repo: "hifiles-desktop-app",
-  token: "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",
+  repo: "hifiles-desktop-app-backup",
+  token: "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",
 });
 
 // Set up logging
