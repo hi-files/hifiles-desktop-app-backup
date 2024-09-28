@@ -6,7 +6,7 @@ autoUpdater.setFeedURL({
   provider: "github",
   owner: "yishak621",
   repo: "hifiles-desktop-app-backup",
-  token: "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",
+  token: "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",
 });
 
 // Set up logging
