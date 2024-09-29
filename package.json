@@ -10,8 +10,8 @@
     "build": "electron-builder",
     "release": "electron-builder -p \"onTagOrDraft\""
   },
-  "repository": "https://github.com/yishak621/hifiles-desktop-app-backup",
-  "homepage": "https://github.com/yishak621/hifiles-desktop-app-backup",
+  "repository": "https://github.com/hi-files/hifiles-desktop-app-backup",
+  "homepage": "https://github.com/hi-files/hifiles-desktop-app-backup",
   "build": {
     "appId": "com.hifiles.www",
     "copyright": "copyright typing.ai",
@@ -53,8 +53,8 @@
   ],
   "keywords": [],
   "author": {
-    "name": "Yishak Abrham Nibretu",
-    "email": "yishakabrham621@gmail.com"
+    "name": "Typing AI",
+    "email": "rares_pascut@yahoo.com"
   },
   "license": "ISC",
   "devDependencies": {
