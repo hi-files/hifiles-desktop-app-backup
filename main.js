@@ -98,7 +98,7 @@ function createWindow() {
   });
   // Wait for window to finish loading before checking for updates
   mainWindow.once("ready-to-show", () => {
-    setTimeout(updater, 3000); // Delay for checking updates after window is ready
+    setTimeout(updater, 3000);
   });
 
   createTray();
@@ -142,6 +142,6 @@ const showAboutDialog = () => {
     title: "About hifiles",
     message: `App Version: ${version}\n\nThis is a hifiles desktop app`,
     buttons: ["OK"],
-    icon: path.join(__dirname, "/build/icon.png"), // Specify the path to your icon
+    icon: path.join(__dirname, "/build/icon.png"),
   });
 };
