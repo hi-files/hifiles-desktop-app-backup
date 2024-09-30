@@ -90,7 +90,7 @@ jobs:
     needs: [build-windows, build-macos, build-linux]
     runs-on: ubuntu-latest
     env:
-      GITHUB_TOKEN: ${{ secrets.GAALO }}
+      GH_TOKEN: ${{ secrets.GAALO }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
