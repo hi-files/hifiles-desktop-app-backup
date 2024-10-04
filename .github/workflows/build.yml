@@ -27,9 +27,6 @@ jobs:
       - name: Build the app for Windows
         run: npm run build -- --win
 
-      - name: List files in dist directory
-        run: dir dist
-
       - name: Upload Windows Artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -53,16 +50,13 @@ jobs:
       - name: Build the app for macOS
         run: npm run build -- --mac
 
-      - name: List files in dist directory
-        run: ls -al dist
-
       - name: Upload macOS Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: macos-artifact
           path: dist/**/*
 
-  build-linux:
+  build-linux-deb:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -76,20 +70,70 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build the app for Linux (DEB, RPM, AppImage)
-        run: npm run build -- --linux deb,rpm,AppImage
+      - name: Build the app for Linux (DEB)
+        run: npm run build -- --linux deb
 
-      - name: List files in dist directory
-        run: ls -al dist
-
-      - name: Upload Linux Artifacts
+      - name: Upload DEB Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: linux-artifacts
+          name: deb-artifact
+          path: dist/**/*
+
+  build-linux-rpm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the app for Linux (RPM)
+        run: npm run build -- --linux rpm
+
+      - name: Upload RPM Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rpm-artifact
+          path: dist/**/*
+
+  build-linux-appimage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the app for Linux (AppImage)
+        run: npm run build -- --linux AppImage
+
+      - name: Upload AppImage Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: appimage-artifact
           path: dist/**/*
 
   create-release:
-    needs: [build-windows, build-macos, build-linux]
+    needs:
+      [
+        build-windows,
+        build-macos,
+        build-linux-deb,
+        build-linux-rpm,
+        build-linux-appimage,
+      ]
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -109,10 +153,22 @@ jobs:
           name: macos-artifact
           path: dist
 
-      - name: Download Linux Artifacts
+      - name: Download DEB Artifact
         uses: actions/download-artifact@v4
         with:
-          name: linux-artifacts
+          name: deb-artifact
+          path: dist
+
+      - name: Download RPM Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: rpm-artifact
+          path: dist
+
+      - name: Download AppImage Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: appimage-artifact
           path: dist
 
       - name: Create Release
@@ -140,7 +196,7 @@ jobs:
           asset_name: hifiles-setup-macos-1.1.5.dmg
           asset_content_type: application/octet-stream
 
-      - name: Upload .deb Linux Artifact to Release
+      - name: Upload DEB Artifact to Release
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
@@ -148,7 +204,7 @@ jobs:
           asset_name: hifiles-setup-linux-1.1.5.deb
           asset_content_type: application/octet-stream
 
-      - name: Upload .rpm Linux Artifact to Release
+      - name: Upload RPM Artifact to Release
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
@@ -156,7 +212,7 @@ jobs:
           asset_name: hifiles-setup-linux-1.1.5.rpm
           asset_content_type: application/octet-stream
 
-      - name: Upload AppImage Linux Artifact to Release
+      - name: Upload AppImage Artifact to Release
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
