@@ -77,10 +77,7 @@ jobs:
         run: npm install
 
       - name: Build the app for Linux (DEB, RPM, AppImage)
-        run: |
-          npm run build -- --linux --deb
-          npm run build -- --linux --rpm
-          npm run build -- --linux --appimage
+        run: npm run build -- --linux deb,rpm,AppImage
 
       - name: List files in dist directory
         run: ls -al dist
