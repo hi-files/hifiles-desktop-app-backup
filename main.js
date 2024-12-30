@@ -81,7 +81,7 @@ function createWindow() {
     },
   });
   //LOAD URL
-  mainWindow.loadURL("https://hifiles.vercel.app");
+  mainWindow.loadURL("https://desktop.hifiles.com");
 
   //OPEN LINKS IN TO THE USER DEFAULT BROWSER
 
@@ -140,7 +140,7 @@ const showAboutDialog = () => {
   dialog.showMessageBox({
     type: "info",
     title: "About hifiles",
-    message: `App Version: ${version}\n\nThis is a hifiles desktop app`,
+    message: `App Version: ${version}\n\n HiFiles - AI Powered Document Chat , Assistant, Files Chat, Ask Docs`,
     buttons: ["OK"],
     icon: path.join(__dirname, "/build/icon.png"),
   });

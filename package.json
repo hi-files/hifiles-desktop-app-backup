@@ -1,6 +1,6 @@
 {
   "name": "hifiles",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "versionType": "beta",
   "description": "hifiles-chat with your docs",
   "main": "main.js",
@@ -46,7 +46,7 @@
   "publish": [
     {
       "provider": "github",
-      "owner": "yishak621",
+      "owner": "Typing AI",
       "repo": "hifiles-desktop-app-backup",
       "token": "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"
     }
